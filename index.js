@@ -3,6 +3,7 @@ const morgan = require("morgan")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const cors = require("cors")
+const compression = require("compression")
 
 dotenv.config()
 
@@ -23,8 +24,9 @@ mongoose
   })
 
 app.use(express.json())
-app.use(cors({ origin: "https://lucascurtotodo.onrender.com" }))
+app.use(cors())
 app.use(morgan("dev"))
+app.use(compression())
 
 const auth = require("./src/routes/auth")
 const validateToken = require("./src/middlewares/validate-token")
