@@ -24,7 +24,7 @@ mongoose
   })
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: "https://lucascurtotodo.onrender.com" }))
 app.use(morgan("dev"))
 app.use(compression())
 
