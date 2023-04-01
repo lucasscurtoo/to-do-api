@@ -24,9 +24,14 @@ mongoose
   })
 
 app.use(express.json())
-app.use(cors({ origin: "https://lucascurtotodo.onrender.com" }))
+app.use(cors())
 app.use(morgan("dev"))
-app.use(compression())
+app.use(
+  compression({
+    level: 6,
+    threshold: 100 * 1000,
+  })
+)
 
 const auth = require("./src/routes/auth")
 const validateToken = require("./src/middlewares/validate-token")
