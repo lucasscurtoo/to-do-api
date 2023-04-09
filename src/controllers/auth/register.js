@@ -37,7 +37,8 @@ const register = async (req, res) => {
         username: user.username,
         id: user._id,
       },
-      process.env.TOKEN_SECRET
+      process.env.TOKEN_SECRET,
+      { expiresIn: "1d" }
     )
 
     res.header("auth-token", token).json({
