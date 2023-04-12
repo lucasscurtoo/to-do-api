@@ -8,7 +8,6 @@ const verifyToken = (req, res, next) => {
     const verify = jwt.verify(token, process.env.TOKEN_SECRET, {
       algorithms: ["HS256"],
     })
-    console.log(req.body)
     if ((req.body.username || req.query.username) !== verify.username) {
       return res.status(401).json({ error: true, message: "Unauthorized user" })
     }
