@@ -35,11 +35,12 @@ app.use(
 
 const auth = require("./src/routes/auth")
 const validateToken = require("./src/middlewares/validate-token")
+const checkSpaces = require("./src/middlewares/check-spaces")
 const lists = require("./src/routes/lists")
 const tasks = require("./src/routes/tasks")
 const user = require("./src/routes/user")
 
-app.use("/auth", auth)
+app.use("/auth", checkSpaces, auth)
 app.use("/lists", validateToken, lists)
 app.use("/tasks", validateToken, tasks)
 app.use("/users", validateToken, user)

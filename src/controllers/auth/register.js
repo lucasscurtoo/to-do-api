@@ -13,6 +13,8 @@ const register = async (req, res) => {
   const { error } = schemaRegister.validate(req.body)
   if (error) return res.status(400).json({ error: error.details[0].message })
 
+  console.log(JSON.stringify(req.body))
+
   const userExists = await User.findOne({ username: req.body.username })
   if (userExists)
     return res
