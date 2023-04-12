@@ -41,8 +41,8 @@ const tasks = require("./src/routes/tasks")
 const user = require("./src/routes/user")
 
 app.use("/auth", checkSpaces, auth)
-app.use("/lists", validateToken, lists)
-app.use("/tasks", validateToken, tasks)
-app.use("/users", validateToken, user)
+app.use("/lists", validateToken, checkSpaces, lists)
+app.use("/tasks", validateToken, checkSpaces, tasks)
+app.use("/users", validateToken, checkSpaces, user)
 
 app.listen(port, () => console.log("server running on port", port))
